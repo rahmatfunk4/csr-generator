@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 def gen_rsa_key():
     """
-    秘密鍵を2048bitで生成
+    Generate private key with 2048bit
     """
     return rsa.generate_private_key(
         public_exponent=65537,
@@ -23,7 +23,7 @@ def gen_rsa_key():
 
 def gen_csr(key, c, s, l, o, ou, cn):
     """
-    CSRをSHR256で生成
+    Generate CSR with SHR256
     """
     return x509.CertificateSigningRequestBuilder().subject_name(x509.Name([
         x509.NameAttribute(NameOID.COUNTRY_NAME, c),
@@ -38,7 +38,7 @@ def gen_csr(key, c, s, l, o, ou, cn):
 @app.route('/')
 def form():
     """
-    トップページ表示
+    Top page display
     """
     return render_template('form.html')
 
@@ -46,7 +46,7 @@ def form():
 @app.route('/confirm', methods=['POST', 'GET'])
 def confirm():
     """
-    POSTで受け取ったデータを元にCSRを生成して結果を表示
+    Generate CSR based on the data received by POST and display the result
     """
     if request.method == 'POST':
         country = request.form["Country"]
@@ -85,7 +85,7 @@ def confirm():
 @app.route('/download_private_key', methods=['POST'])
 def download_private_key():
     """
-    生成された秘密鍵をダウンロードさせる
+    Download the generated private key
     """
     if request.method == 'POST':
         private_key = io.BytesIO(request.form['private-key'].encode())
@@ -99,7 +99,7 @@ def download_private_key():
 @app.route('/download_csr', methods=['POST'])
 def download_csr():
     """
-    生成されたCSRをダウンロードさせる
+    Download the generated CSR
     """
     if request.method == 'POST':
         csr = io.BytesIO(request.form['csr'].encode())
