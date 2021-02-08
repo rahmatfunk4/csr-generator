@@ -8,7 +8,7 @@ services:
     ports:
       - "3031:3031"
     environment:
-      TZ: "Asia/Tokyo"
+      TZ: "Asia/Indonesia"
 
   nginx:
     build: ./web
@@ -19,4 +19,4 @@ services:
     ports:
       - "80:80"
     environment:
-      TZ: "Asia/Tokyo"
+      TZ: "Asia/Indonesia"
