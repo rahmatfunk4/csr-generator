@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <label for="input-value">入力値:</label>
+            <label for="input-value">Input value:</label>
             <table class="table-striped">
                     {% for key, value in result.items() %}
                         <tr>
@@ -25,7 +25,7 @@
         <div class="container-fluid">
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <label for="private-key">秘密鍵:</label>
+                        <label for="private-key">Private-key:</label>
                         <textarea readonly id = "private-key" class="form-control text-monospace" rows=28>{{privete_key_pem.decode('ascii')}}</textarea>
                     </div>
 
@@ -39,14 +39,14 @@
                     <form action = "/download_private_key" method = "POST">
                         <input type = "hidden" name = "private-key" value="{{privete_key_pem.decode('ascii')}}">
                         <input type = "hidden" name = "CommonName" value="{{result['CommonName']}}">
-                        <input type = "submit" value = "秘密鍵をダウンロード" class="btn btn-primary btn-block">
+                        <input type = "submit" value = "Download-private-key" class="btn btn-primary btn-block">
                     </form>
                 </div>
                 <div class="form-group col-sm-6">
                     <form action = "/download_csr" method = "POST">
                         <input type = "hidden" name = "csr" value="{{csr_pem.decode('ascii')}}">
                         <input type = "hidden" name = "CommonName" value="{{result['CommonName']}}">
-                        <input type = "submit" value = "CSRをダウンロード" class="btn btn-primary btn-block">
+                        <input type = "submit" value = "Download-CSR" class="btn btn-primary btn-block">
                     </form>
                 </div>
             </div>
