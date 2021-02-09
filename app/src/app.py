@@ -92,7 +92,7 @@ def download_private_key():
 
         return send_file(
             private_key,
-            attachment_filename=request.form['CommonName'] + "_key.pem",
+            attachment_filename=request.form['CommonName'] + "_key.key",
             as_attachment=True)
 
 
@@ -105,7 +105,7 @@ def download_csr():
         csr = io.BytesIO(request.form['csr'].encode())
         return send_file(
             csr,
-            attachment_filename=request.form['CommonName'] + "_csr.pem",
+            attachment_filename=request.form['CommonName'] + "_csr.txt",
             as_attachment=True)
 
 
