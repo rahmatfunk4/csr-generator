@@ -20,6 +20,3 @@ cd csr-generator
 docker-compose up -d --build
 http://localhost
 ```
-## Author
-
-[nullpop](https://github.com/nullpop)
